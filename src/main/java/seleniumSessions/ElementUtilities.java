@@ -96,5 +96,12 @@ public class ElementUtilities {
 		
 		act.doubleClick(Element).perform();
 	}
+	
+	public static void doDragAndDrop(WebDriver driver, WebElement Drag, WebElement Drop) {
+		Actions act= new Actions(driver);
+		
+		act.dragAndDrop(Drag, Drop).perform();
+		
+	}
 
 }
