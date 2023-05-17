@@ -2,12 +2,15 @@ package seleniumSessions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ElementUtilities {
 	
@@ -102,6 +105,34 @@ public class ElementUtilities {
 		
 		act.dragAndDrop(Drag, Drop).perform();
 		
+	}
+	
+	public static void pageloadTimeOut(WebDriver driver, int time) {
+		driver.manage().timeouts().pageLoadTimeout(time, TimeUnit.SECONDS);
+	}
+	
+	public static void waitForAlert(WebDriver driver, int time) {
+		WebDriverWait wait= new WebDriverWait(driver, time);
+		
+		wait.until(ExpectedConditions.alertIsPresent());
+	}
+	
+	public static void waitForElementVisable(WebDriver driver, int time, WebElement element) {
+		WebDriverWait wait= new WebDriverWait(driver, time);
+		
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	
+	public static void waitForElementELementToBeClickable(WebDriver driver, int time, WebElement element) {
+		WebDriverWait wait= new WebDriverWait(driver, time);
+		
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+	}
+	
+	public static void waitForElementELementToBeSelect(WebDriver driver, int time, WebElement element) {
+		WebDriverWait wait= new WebDriverWait(driver, time);
+		
+		wait.until(ExpectedConditions.elementToBeSelected(element));
 	}
 
 }
